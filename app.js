@@ -9,15 +9,32 @@ const port = 8000;
 
 //* 서버 생성
 const server = http.createServer(function(req, res) {
+  console.log(req.url);
   if(req.method === "GET") {
     console.log("in GET");
-    if(req.url === "/") {
+    if(req.url.endsWith(".js")) {
+      console.log("끝이 js");
+      const javascript = fs.readFileSync(`./${req.url}`);
+      res.writeHead(200, {"Content-Type" : "application/javascript"});
+      res.write(javascript);
+      res.end();
+    } else if (req.url.endsWith(".css")) {
+      console.log("끝이 CSS");
+      const css = fs.readFileSync(`./${req.url}`);
+      res.writeHead(200, {"Content-Type" : "text/css"});
+      res.write(css);
+      res.end();
+    } else if(req.url === "/") {
       const page = fs.readFileSync('./public/index.html');
       res.write(page);
       res.end();
       console.log("접속 : 홈");
     } else if (req.url === "/pageDetail") {
       console.log("접속 : 글 상세");
+    } else if (req.url === "/pageWrite") {
+      const page = fs.readFileSync('./public/pageWrite.html');
+      res.write(page);
+      res.end();
     } else {
       const page = fs.readFileSync('./public/error404.html');
       res.write(page);
