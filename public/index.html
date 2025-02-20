@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>글 목록</title>
+  <link rel="stylesheet" href="./css/style.css">
 </head>
-<body>
-  <form action="/pageWrite" method="post">
-    <div>
+<body class="text-center">
+  <h1>작성한 글 목록</h1>
+  <button type="button" class="p1-2 mb-1">글 작성</button>
+  <div class="content">
+    <div class="display-grid grid-tem-col-1fr2">
       <div>제목</div>
-      <input type="text" name="title" placeholder="제목을 입력해 주세요">
+      <div>작성일</div>
     </div>
-    <div>
-      <div>내용</div>
-      <textarea name="content" placeholder="내용 입력"></textarea>
-    </div>
-    <button type="submit">작성</button>
-  </form>
+  </div>
+  <script src="./js/index.js" type="module"></script>
 </body>
 </html>
