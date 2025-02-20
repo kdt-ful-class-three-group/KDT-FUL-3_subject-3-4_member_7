@@ -31,6 +31,10 @@ const server = http.createServer(function(req, res) {
       console.log("접속 : 홈");
     } else if (req.url === "/pageDetail") {
       console.log("접속 : 글 상세");
+    } else if (req.url === "/pageWrite") {
+      const page = fs.readFileSync('./public/pageWrite.html');
+      res.write(page);
+      res.end();
     } else {
       const page = fs.readFileSync('./public/error404.html');
       res.write(page);
