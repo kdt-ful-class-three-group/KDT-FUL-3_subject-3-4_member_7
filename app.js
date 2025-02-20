@@ -1,7 +1,8 @@
 //* 서버를 제작하기 위해 HTTP 모듈을 import 해주었다.
 import http from "http";
-//* index.html로 이동시키기 위해 fs모듈을 import 해주었다.
+//* 파일관련 처리를 위해 fs 모듈을 import 해주었다.
 import fs from "fs";
+import { createObject } from "./createObject.js";
 
 //* 서버 동작 시 사용되는 포트 번호를 지정해주기 위해 선언
 const port = 8000;
@@ -17,11 +18,20 @@ const server = http.createServer(function(req, res) {
       console.log("접속 : 홈");
     } else if (req.url === "/pageDetail") {
       console.log("접속 : 글 상세");
+    } else {
+      const page = fs.readFileSync('error404.html');
+      res.write(page);
+      res.end();
     }
   } else if (req.method === "POST") {
     console.log("in POST");
     if(req.url === "/pageWrite") {
       console.log("접속 : 글 작성");
+      req.on('data', (data) => {
+        console.log("받아온 데이터 : ", data);
+        const object = createObject(data);
+        console.log("받아온 데이터 처리 : ", object);
+      })
     }
   }
 })
