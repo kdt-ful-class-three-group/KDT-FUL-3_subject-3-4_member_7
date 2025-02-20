@@ -11,7 +11,19 @@ const port = 8000;
 const server = http.createServer(function(req, res) {
   if(req.method === "GET") {
     console.log("in GET");
-    if(req.url === "/") {
+    if(req.url.endsWith(".js")) {
+      console.log("끝이 js");
+      const javascript = fs.readFileSync(`./public${req.url}`);
+      res.writeHead(200, {"Content-Type" : "application/javascript"});
+      res.write(javascript);
+      res.end();
+    } else if (req.url.endsWith(".css")) {
+      console.log("끝이 CSS");
+      const css = fs.readFileSync(`./public${req.url}`);
+      res.writeHead(200, {"Content-Type" : "text/css"});
+      res.write(css);
+      res.end();
+    } else if(req.url === "/") {
       const page = fs.readFileSync('./public/index.html');
       res.write(page);
       res.end();
