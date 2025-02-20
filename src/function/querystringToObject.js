@@ -1,7 +1,7 @@
 //* querystring형식의 데이터를 처리하기 위해서 import
 import qs from "querystring";
 //* 사용자가 입력한 데이터를 받는 객체
-import { object } from "./pageWriteData.js";
+import { object } from "../const/pageWriteData.js";
 
 function querystringToObject(data) {
   //* 받아온 데이터를 객체화 해준다.
