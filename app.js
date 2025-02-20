@@ -9,17 +9,18 @@ const port = 8000;
 
 //* 서버 생성
 const server = http.createServer(function(req, res) {
+  console.log(req.url);
   if(req.method === "GET") {
     console.log("in GET");
     if(req.url.endsWith(".js")) {
       console.log("끝이 js");
-      const javascript = fs.readFileSync(`./public${req.url}`);
+      const javascript = fs.readFileSync(`./${req.url}`);
       res.writeHead(200, {"Content-Type" : "application/javascript"});
       res.write(javascript);
       res.end();
     } else if (req.url.endsWith(".css")) {
       console.log("끝이 CSS");
-      const css = fs.readFileSync(`./public${req.url}`);
+      const css = fs.readFileSync(`./${req.url}`);
       res.writeHead(200, {"Content-Type" : "text/css"});
       res.write(css);
       res.end();
