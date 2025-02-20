@@ -6,7 +6,14 @@ const port = 8000;
 
 //* 서버 생성
 const server = http.createServer(function(req, res) {
-  console.log("서버 동작 확인");
+  if(req.method === "GET") {
+    console.log("in GET");
+    if(req.url === "/") {
+      console.log("접속 : 홈");
+    } else if (req.url === "/pageDetail") {
+      console.log("접속 : 글 상세");
+    }
+  }
 })
 
 //* 서버 실행
