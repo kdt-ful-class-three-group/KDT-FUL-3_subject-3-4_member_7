@@ -4,9 +4,19 @@ div {
 
 .text-center {text-align: center;}
 
+.w50 {width: 50rem;}
+
+.h3 {height: 3rem;}
+.h20 {height: 20rem;}
+
 .p1-2 {padding: 1rem 2rem;}
 
+.m-auto {margin: 0 auto;}
+
+.mt-2 {margin-top: 2rem;}
+
 .mb-1 {margin-bottom: 1rem;}
+
 
 .display-grid {display: grid;}
 .grid-tem-col-1fr2 {grid-template-columns: 1fr 1fr;}
