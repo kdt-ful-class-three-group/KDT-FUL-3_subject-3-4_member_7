@@ -1,9 +1,6 @@
-import { readDataFile } from "./readDataFile.js"
-
-function dataToJsonParse() {
-  const dataFile = readDataFile();
-  const dataJsonObj = JSON.parse(dataFile);
-  console.log(dataJsonObj);
+function dataToJsonParse(data) {
+  const jsonObj = JSON.parse(data);
+  return jsonObj;
 }
 
 export { dataToJsonParse }
