@@ -2,7 +2,7 @@
 import http from "http";
 //* 파일관련 처리를 위해 fs 모듈을 import 해주었다.
 import fs from "fs";
-import { createObject } from "./src/function/createObject.js";
+import { createJSON } from "./src/function/createJSON.js";
 
 //* 서버 동작 시 사용되는 포트 번호를 지정해주기 위해 선언
 const port = 8000;
@@ -12,8 +12,13 @@ const server = http.createServer(function(req, res) {
   console.log(req.url);
   if(req.method === "GET") {
     console.log("in GET");
-    //* 각 참조한 javascript파일을 가지고 온다.
-    if(req.url.endsWith(".js")) {
+    if(req.url === "/data.JSON") {
+      const json = fs.readFileSync('data.JSON');
+      res.writeHead(200, {"Content-Type" : "text/json"});
+      res.write(json);
+      res.end();
+      //* 각 참조한 javascript파일을 가지고 온다.
+    }else if(req.url.endsWith(".js")) {
       console.log("끝이 js");
       const javascript = fs.readFileSync(`./${req.url}`);
       res.writeHead(200, {"Content-Type" : "application/javascript"});
@@ -59,8 +64,11 @@ const server = http.createServer(function(req, res) {
       req.on('data', (data) => {
         //todo 사용자가 입력한 데이터를 가지고 JSON파일을 만들 예정
         console.log("받아온 데이터 : ", data);
-        const object = createObject(data);
-        console.log("받아온 데이터 처리 : ", object);
+        createJSON(data);
+      })
+      req.on('end', () => {
+        res.writeHead(302, { "location": "/" });
+        res.end();
       })
     }
   }

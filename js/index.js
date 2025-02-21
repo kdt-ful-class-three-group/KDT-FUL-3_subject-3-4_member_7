@@ -1,18 +1,22 @@
-import { object } from "../src/const/pageWriteData.js"
-
 function createList() {
   const contentDiv = document.querySelector('.content');
   const parentDiv = document.createElement('div');
   parentDiv.classList.add("display-grid", "grid-tem-col-1fr2");
-  for (let i = 0; i < 5; i++) {
-    //todo 해당 데이터는 임의로 정의해 줬지만 추후 JSON파일을 읽어와서 데이터를 처리하도록 할 예정
-    object.title = "제목";
-    object.createDate = "2025-01-01";
-    const childDiv = [document.createElement('div'), document.createElement('div')];
-    childDiv[0].textContent = object.title;
-    childDiv[1].textContent = object.createDate;
-    parentDiv.append(childDiv[0], childDiv[1]);
-  }
+  //* JSON파일을 불러올 때 fetch를 사사용해준다.
+  //* data.JSON을 서버에 요청을 하기에 서버에서 /data.JSON 요청방식을 처리해줘야 한다.
+  fetch("data.JSON").then((response) => {
+    //* 요청이 정삭적으로 동작했다면 json파일을 가지고 왔기에 객체로 변환해준다.
+    return response.json();
+    //* text는 response.json의 값이 되며 객체화 된 데이터가 된다.
+  }).then((text) => {
+    //* 배열안에 객체 수 만큼 반복을 진행하게 된다.
+    text.forEach(obj => {
+      const childDiv = [document.createElement('div'), document.createElement('div')];
+      childDiv[0].textContent = obj.title;
+      childDiv[1].textContent = obj.createDate;
+      parentDiv.append(childDiv[0], childDiv[1]);
+    });
+  })
   contentDiv.append(parentDiv);
 }
 
