@@ -2,7 +2,7 @@
 import http from "http";
 //* 파일관련 처리를 위해 fs 모듈을 import 해주었다.
 import fs from "fs";
-import { createObject } from "./src/function/createObject.js";
+import { createObject } from "./src/function/userDataToObject.js";
 import { createJSON } from "./src/function/createJSON.js";
 
 //* 서버 동작 시 사용되는 포트 번호를 지정해주기 위해 선언
