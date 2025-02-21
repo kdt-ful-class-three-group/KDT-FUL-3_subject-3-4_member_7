@@ -60,9 +60,7 @@ const server = http.createServer(function(req, res) {
       req.on('data', (data) => {
         //todo 사용자가 입력한 데이터를 가지고 JSON파일을 만들 예정
         console.log("받아온 데이터 : ", data);
-        const object = createObject(data);
-        createJSON(object);
-        console.log("받아온 데이터 처리 : ", object);
+        createJSON(data);
       })
     }
   }
