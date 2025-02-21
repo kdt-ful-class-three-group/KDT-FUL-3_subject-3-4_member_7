@@ -3,6 +3,7 @@ import http from "http";
 //* 파일관련 처리를 위해 fs 모듈을 import 해주었다.
 import fs from "fs";
 import { createObject } from "./src/function/createObject.js";
+import { createJSON } from "./src/function/createJSON.js";
 
 //* 서버 동작 시 사용되는 포트 번호를 지정해주기 위해 선언
 const port = 8000;
@@ -60,6 +61,7 @@ const server = http.createServer(function(req, res) {
         //todo 사용자가 입력한 데이터를 가지고 JSON파일을 만들 예정
         console.log("받아온 데이터 : ", data);
         const object = createObject(data);
+        createJSON(object);
         console.log("받아온 데이터 처리 : ", object);
       })
     }
