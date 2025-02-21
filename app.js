@@ -12,8 +12,13 @@ const server = http.createServer(function(req, res) {
   console.log(req.url);
   if(req.method === "GET") {
     console.log("in GET");
-    //* 각 참조한 javascript파일을 가지고 온다.
-    if(req.url.endsWith(".js")) {
+    if(req.url === "/data.JSON") {
+      const json = fs.readFileSync('data.JSON');
+      res.writeHead(200, {"Content-Type" : "text/json"});
+      res.write(json);
+      res.end();
+      //* 각 참조한 javascript파일을 가지고 온다.
+    }else if(req.url.endsWith(".js")) {
       console.log("끝이 js");
       const javascript = fs.readFileSync(`./${req.url}`);
       res.writeHead(200, {"Content-Type" : "application/javascript"});
@@ -60,6 +65,10 @@ const server = http.createServer(function(req, res) {
         //todo 사용자가 입력한 데이터를 가지고 JSON파일을 만들 예정
         console.log("받아온 데이터 : ", data);
         createJSON(data);
+      })
+      req.on('end', () => {
+        res.writeHead(302, { "location": "/" });
+        res.end();
       })
     }
   }
