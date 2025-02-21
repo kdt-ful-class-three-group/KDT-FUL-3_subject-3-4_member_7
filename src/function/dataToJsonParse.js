@@ -1,5 +1,5 @@
 function dataToJsonParse(data) {
-  const jsonObj = [];
+  let jsonObj = [];
   if (data !== '') {
     jsonObj = JSON.parse(data);
   }
