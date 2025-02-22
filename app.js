@@ -2,7 +2,13 @@
 import http from "http";
 //* 파일관련 처리를 위해 fs 모듈을 import 해주었다.
 import fs from "fs";
-import { createObject } from "./src/function/createObject.js";
+import url from "url";
+import { createJSON } from "./src/function/createJSON.js";
+import { orderSplit } from "./src/function/orderSplit.js";
+import { findObjectAtDataJSON } from "./src/function/findObjectAtDataJSON.js";
+import { querystringToObject } from "./src/function/querystringToObject.js";
+import { modifyDataToObject } from "./src/function/modifyDataToObject.js";
+import { updateListJson } from "./src/function/updateListJson.js";
 
 //* 서버 동작 시 사용되는 포트 번호를 지정해주기 위해 선언
 const port = 8000;
@@ -12,8 +18,18 @@ const server = http.createServer(function(req, res) {
   console.log(req.url);
   if(req.method === "GET") {
     console.log("in GET");
-    //* 각 참조한 javascript파일을 가지고 온다.
-    if(req.url.endsWith(".js")) {
+    if(req.url === "/data.JSON") {
+      const json = fs.readFileSync('data.JSON');
+      res.writeHead(200, {"Content-Type" : "text/json"});
+      res.write(json);
+      res.end();
+    } else if(req.url === "/list.JSON") {
+      const json = fs.readFileSync('list.JSON');
+      res.writeHead(200, {"Content-Type" : "text/json"});
+      res.write(json);
+      res.end();
+      //* 각 참조한 javascript파일을 가지고 온다.
+    }else if(req.url.endsWith(".js")) {
       console.log("끝이 js");
       const javascript = fs.readFileSync(`./${req.url}`);
       res.writeHead(200, {"Content-Type" : "application/javascript"});
@@ -33,8 +49,11 @@ const server = http.createServer(function(req, res) {
       res.end();
       console.log("접속 : 홈");
     //* 경로가 /pageDetail 일 경우 상세 페이지를 표시해준다.
-    } else if (req.url === "/pageDetail") {
+    } else if (req.url.startsWith('/pageDetail')) {
       console.log("접속 : 글 상세");
+      const dataQs = url.parse(req.url).query;
+      const splitData = orderSplit(dataQs);
+      findObjectAtDataJSON(splitData);
       const page = fs.readFileSync('./public/pageDetail.html');
       res.write(page);
       res.end();
@@ -44,8 +63,13 @@ const server = http.createServer(function(req, res) {
       const page = fs.readFileSync('./public/pageWrite.html');
       res.write(page);
       res.end();
-    //* 이외의 경로는 파일이 존재하지 않기 때문에 404 에러를 표시해준다.
+    } else if (req.url.startsWith("/pageModify")) {
+      const page = fs.readFileSync('./public/pageModify.html');
+      res.write(page);
+      res.end();
+      console.log("pageModify");
     } else {
+      //* 이외의 경로는 파일이 존재하지 않기 때문에 404 에러를 표시해준다.
       const page = fs.readFileSync('./public/error404.html');
       res.write(page);
       res.end();
@@ -59,9 +83,22 @@ const server = http.createServer(function(req, res) {
       req.on('data', (data) => {
         //todo 사용자가 입력한 데이터를 가지고 JSON파일을 만들 예정
         console.log("받아온 데이터 : ", data);
-        const object = createObject(data);
-        console.log("받아온 데이터 처리 : ", object);
+        createJSON(data);
       })
+      req.on('end', () => {
+        res.writeHead(302, { "location": "/" });
+        res.end();
+      })
+    } else if(req.url === "/pageModify") {
+      req.on('data', (data) => {
+        const dataModify = modifyDataToObject(data);
+        updateListJson(dataModify);
+      })
+      req.on('end', () => {
+        res.writeHead(302, { "location": "/" });
+        res.end();
+      })
+      console.log("post modify");
     }
   }
 })
