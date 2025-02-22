@@ -15,7 +15,12 @@ const server = http.createServer(function(req, res) {
   console.log(req.url);
   if(req.method === "GET") {
     console.log("in GET");
-    if(req.url === "/list.JSON") {
+    if(req.url === "/data.JSON") {
+      const json = fs.readFileSync('data.JSON');
+      res.writeHead(200, {"Content-Type" : "text/json"});
+      res.write(json);
+      res.end();
+    } else if(req.url === "/list.JSON") {
       const json = fs.readFileSync('list.JSON');
       res.writeHead(200, {"Content-Type" : "text/json"});
       res.write(json);
