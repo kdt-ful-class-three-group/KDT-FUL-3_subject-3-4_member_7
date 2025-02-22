@@ -7,11 +7,11 @@ function querystringToObject(data) {
   //* 받아온 데이터를 객체화 해준다.
   const dataObj = qs.parse(data.toString());
   //* 변화된 데이터를 객체에 담는다.
-  object.order = 0;
+  object.order = object.order;
   object.title = dataObj.title;
   object.content = dataObj.content;
-  object.createDate = "2025-02-20";
-
+  object.createDate = new Date().toLocaleString();
+  object.order++;
   return object;
 }
 
