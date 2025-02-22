@@ -50,6 +50,9 @@ const server = http.createServer(function(req, res) {
       res.write(page);
       res.end();
     } else if (req.url === "/pageModify") {
+      const page = fs.readFileSync('./public/pageModify.html');
+      res.write(page);
+      res.end();
       console.log("pageModify");
     } else {
       //* 이외의 경로는 파일이 존재하지 않기 때문에 404 에러를 표시해준다.
