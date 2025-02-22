@@ -8,7 +8,7 @@
 </head>
 <body class="text-center">
   <h1>글 수정</h1>
-  <form action="/pageWrite" method="post">
+  <form action="/pageModify" method="post">
     <div class="w50 m-auto">
       <div class="display-grid grid-tem-col-1fr2 h3">
         <div>제목</div>
@@ -19,8 +19,9 @@
         <textarea name="content" placeholder="내용을 입력해주세요" required></textarea>
       </div>
     </div>
-    <button type="submit" class="p1-2 mb-1 mt-2">작성 완료</button>
+    <button type="button" class="p1-2 mb-1 mt-2">작성 완료</button>
     <button type="button" class="p1-2 mb-1 mt-2" onclick="location.href='/'">작성 취소</button>
   </form>
+  <script src="../js/modify.js"></script>
 </body>
 </html>

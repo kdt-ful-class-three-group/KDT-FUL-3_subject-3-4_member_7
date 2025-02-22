@@ -6,6 +6,9 @@ import url from "url";
 import { createJSON } from "./src/function/createJSON.js";
 import { orderSplit } from "./src/function/orderSplit.js";
 import { findObjectAtDataJSON } from "./src/function/findObjectAtDataJSON.js";
+import { querystringToObject } from "./src/function/querystringToObject.js";
+import { modifyDataToObject } from "./src/function/modifyDataToObject.js";
+import { updateListJson } from "./src/function/updateListJson.js";
 
 //* 서버 동작 시 사용되는 포트 번호를 지정해주기 위해 선언
 const port = 8000;
@@ -60,7 +63,7 @@ const server = http.createServer(function(req, res) {
       const page = fs.readFileSync('./public/pageWrite.html');
       res.write(page);
       res.end();
-    } else if (req.url === "/pageModify") {
+    } else if (req.url.startsWith("/pageModify")) {
       const page = fs.readFileSync('./public/pageModify.html');
       res.write(page);
       res.end();
@@ -86,6 +89,16 @@ const server = http.createServer(function(req, res) {
         res.writeHead(302, { "location": "/" });
         res.end();
       })
+    } else if(req.url === "/pageModify") {
+      req.on('data', (data) => {
+        const dataModify = modifyDataToObject(data);
+        updateListJson(dataModify);
+      })
+      req.on('end', () => {
+        res.writeHead(302, { "location": "/" });
+        res.end();
+      })
+      console.log("post modify");
     }
   }
 })
