@@ -12,13 +12,19 @@ function createList() {
     //* 배열안에 객체 수 만큼 반복을 진행하게 된다.
     text.forEach(obj => {
       const childDiv = [document.createElement('div'), document.createElement('div')];
-      childDiv[0].setAttribute("id", obj.order);
       childDiv[0].textContent = obj.title;
       childDiv[1].textContent = obj.createDate;
       parentDiv.append(childDiv[0], childDiv[1]);
+      setClickEvent(childDiv[0]);
     });
   })
   contentDiv.append(parentDiv);
 }
 
 createList();
+
+function setClickEvent(div) {
+  div.addEventListener('click', () => {
+    location.href = `/pageDetail?order=${div.getAttribute('id')}`;
+  })
+}
