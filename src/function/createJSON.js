@@ -12,8 +12,8 @@ function createJSON(data) {
   userData.push(fileData);
   //* 객체를 JSON문자열로 변환한다.
   const dataJSON = dataToJsonStringify(userData.flat());
-  //* data.JSON으로 파일 생성
-  fs.writeFileSync("data.JSON", dataJSON);
+  //* list.JSON으로 파일 생성
+  fs.writeFileSync("list.JSON", dataJSON);
 }
 
 export { createJSON }

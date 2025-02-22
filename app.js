@@ -5,6 +5,7 @@ import fs from "fs";
 import url from "url";
 import { createJSON } from "./src/function/createJSON.js";
 import { orderSplit } from "./src/function/orderSplit.js";
+import { findObjectAtDataJSON } from "./src/function/findObjectAtDataJSON.js";
 
 //* 서버 동작 시 사용되는 포트 번호를 지정해주기 위해 선언
 const port = 8000;
@@ -14,8 +15,8 @@ const server = http.createServer(function(req, res) {
   console.log(req.url);
   if(req.method === "GET") {
     console.log("in GET");
-    if(req.url === "/data.JSON") {
-      const json = fs.readFileSync('data.JSON');
+    if(req.url === "/list.JSON") {
+      const json = fs.readFileSync('list.JSON');
       res.writeHead(200, {"Content-Type" : "text/json"});
       res.write(json);
       res.end();
@@ -44,6 +45,7 @@ const server = http.createServer(function(req, res) {
       console.log("접속 : 글 상세");
       const dataQs = url.parse(req.url).query;
       const splitData = orderSplit(dataQs);
+      findObjectAtDataJSON(splitData);
       const page = fs.readFileSync('./public/pageDetail.html');
       res.write(page);
       res.end();
