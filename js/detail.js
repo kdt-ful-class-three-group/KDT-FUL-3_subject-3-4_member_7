@@ -1,3 +1,5 @@
+const buttons = document.querySelectorAll('button');
+
 function createPageDetail() {
   const contentDiv = document.querySelector('.content');
   const titleDiv = document.querySelector('.title');
@@ -7,3 +9,9 @@ function createPageDetail() {
 }
 
 createPageDetail();
+
+//* 수정 버튼 클릭시 발생하는 이벤트
+buttons[0].addEventListener('click', () => {
+  location.href = "/pageModify";
+});
+
