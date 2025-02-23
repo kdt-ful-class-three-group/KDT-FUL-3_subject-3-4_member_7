@@ -12,6 +12,10 @@ function createPageDetail() {
     buttons[0].addEventListener('click', () => {
       location.href = `/pageModify?order=${obj.order}`;
     });
+    //* 삭제 버튼 클릭시 발생하는 이벤트
+    buttons[1].addEventListener('click', () => {
+      location.href = `/pageDelete?order=${obj.order}`;
+    });
   })
 }
 

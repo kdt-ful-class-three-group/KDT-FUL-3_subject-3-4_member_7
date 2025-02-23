@@ -7,7 +7,7 @@ function modifyDataToObject(data) {
   //* 받아온 데이터를 객체화 해준다.
   const dataObj = qs.parse(data.toString());
   //* 변화된 데이터를 객체에 담는다.
-  object.order = dataObj.order;
+  object.order = Number(dataObj.order);
   object.title = dataObj.title;
   object.content = dataObj.content;
   object.createDate = new Date().toLocaleString();
