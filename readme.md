@@ -1,39 +1,39 @@
 # 프로젝트 구조 설명
 KDT-FUL-3_SUBJECT-3-4_MEMBER_7 </br>
 ├─css/ </br>
-│     ├─style.css </br>
+│    ├─style.css </br>
 │ </br>
 ├─js/ </br>
-│  ├─detail.js </br>
-│  ├─index.js </br>
-│  └─modify.js </br>
+│   ├─detail.js </br>
+│   ├─index.js </br>
+│   └─modify.js </br>
 │ </br>
 ├─public/ </br>
-│   ├─error404.html </br>
-│   ├─index.html </br>
-│   ├─pageDetail.html </br>
-│   ├─pageModify.html </br>
-│   └─pageWrite.html </br>
+│       ├─error404.html </br>
+│       ├─index.html </br>
+│       ├─pageDetail.html </br>
+│       ├─pageModify.html </br>
+│       └─pageWrite.html </br>
 ├─src/ </br>
 │  ├─const/ </br>
 │  │   └─pageWriteData.js </br>
 │  │ </br>
 │  └─function/ </br>
-│       ├─createJSON.js </br>
-│       ├─createOneJsonFile.js </br>
-│       ├─dataToJsonParse.js </br>
-│       ├─dataToJsonStringify.js </br>
-│       ├─deleteDataInListJson.js </br>
-│       ├─fileDataToObject.js </br>
-│       ├─findLastOrder.js </br>
-│       ├─findObjectAtDataJSON.js </br>
-│       ├─getOrder.js </br>
-│       ├─modifyDataToObject.js </br>
-│       ├─orderSplit.js </br>
-│       ├─querystringToObject.js </br>
-│       ├─readDataFile.js </br>
-│       ├─updateListJson.js </br>
-│       └─userDataToObject.js </br>
+│            ├─createJSON.js </br>
+│            ├─createOneJsonFile.js </br>
+│            ├─dataToJsonParse.js </br>
+│            ├─dataToJsonStringify.js </br>
+│            ├─deleteDataInListJson.js </br>
+│            ├─fileDataToObject.js </br>
+│            ├─findLastOrder.js </br>
+│            ├─findObjectAtDataJSON.js </br>
+│            ├─getOrder.js </br>
+│            ├─modifyDataToObject.js </br>
+│            ├─orderSplit.js </br>
+│            ├─querystringToObject.js </br>
+│            ├─readDataFile.js </br>
+│            ├─updateListJson.js </br>
+│            └─userDataToObject.js </br>
 ├─app.js </br>
 ├─data.JSON </br>
 ├─list.JSON </br>
