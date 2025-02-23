@@ -1,44 +1,42 @@
 # 프로젝트 구조 설명
-KDT-FUL-3_SUBJECT-3-4_MEMBER_7 </br>
-├─css/ </br>
-│    ├─style.css </br>
-│ </br>
-├─js/ </br>
-│   ├─detail.js </br>
-│   ├─index.js </br>
-│   └─modify.js </br>
-│ </br>
-├─public/ </br>
-│       ├─error404.html </br>
-│       ├─index.html </br>
-│       ├─pageDetail.html </br>
-│       ├─pageModify.html </br>
-│       └─pageWrite.html </br>
-├─src/ </br>
-│  ├─const/ </br>
-│  │   └─pageWriteData.js </br>
-│  │ </br>
-│  └─function/ </br>
-│            ├─createJSON.js </br>
-│            ├─createOneJsonFile.js </br>
-│            ├─dataToJsonParse.js </br>
-│            ├─dataToJsonStringify.js </br>
-│            ├─deleteDataInListJson.js </br>
-│            ├─fileDataToObject.js </br>
-│            ├─findLastOrder.js </br>
-│            ├─findObjectAtDataJSON.js </br>
-│            ├─getOrder.js </br>
-│            ├─modifyDataToObject.js </br>
-│            ├─orderSplit.js </br>
-│            ├─querystringToObject.js </br>
-│            ├─readDataFile.js </br>
-│            ├─updateListJson.js </br>
-│            └─userDataToObject.js </br>
-├─app.js </br>
-├─data.JSON </br>
-├─list.JSON </br>
-├─package.json </br>
-└─readme.md </br>
+KDT-FUL-3_SUBJECT-3-4_MEMBER_7
+- css/
+    -style.css
+- js/
+    -detail.js
+	-index.js
+	-modify.js
+-public/
+	-error404.html
+	-index.html
+	-pageDetail.html
+	-pageModify.html
+	-pageWrite.html
+-src/
+	-const/
+		-pageWriteData.js
+
+	-function/
+		-createJSON.js
+		-createOneJsonFile.js
+		-dataToJsonParse.js
+		-dataToJsonStringify.js
+		-deleteDataInListJson.js
+		-fileDataToObject.js
+		-findLastOrder.js
+		-findObjectAtDataJSON.js
+		-getOrder.js
+		-modifyDataToObject.js
+		-orderSplit.js
+		-querystringToObject.js
+		-readDataFile.js
+		-updateListJson.js
+		-userDataToObject.js
+-app.js
+-data.JSON
+-list.JSON
+-package.json
+-readme.md
 
 # 실행 방법
 ## 1. 홈 화면 확인하기
