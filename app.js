@@ -6,9 +6,9 @@ import url from "url";
 import { createJSON } from "./src/function/createJSON.js";
 import { orderSplit } from "./src/function/orderSplit.js";
 import { findObjectAtDataJSON } from "./src/function/findObjectAtDataJSON.js";
-import { querystringToObject } from "./src/function/querystringToObject.js";
 import { modifyDataToObject } from "./src/function/modifyDataToObject.js";
 import { updateListJson } from "./src/function/updateListJson.js";
+import { deleteDataInListJson } from "./src/function/deleteDataInListJson.js";
 
 //* 서버 동작 시 사용되는 포트 번호를 지정해주기 위해 선언
 const port = 8000;
@@ -64,6 +64,12 @@ const server = http.createServer(function(req, res) {
     } else if (req.url.startsWith("/pageModify")) {
       const page = fs.readFileSync('./public/pageModify.html');
       res.write(page);
+      res.end();
+    } else if (req.url.startsWith("/pageDelete")) {
+      const dataQs = url.parse(req.url).query;
+      const splitData = orderSplit(dataQs);
+      deleteDataInListJson(splitData)
+      res.writeHead(302, { "location": "/" });
       res.end();
     } else {
       //* 이외의 경로는 파일이 존재하지 않기 때문에 404 에러를 표시해준다.
