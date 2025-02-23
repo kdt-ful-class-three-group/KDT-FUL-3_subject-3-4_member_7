@@ -1,7 +1,7 @@
 # 프로젝트 구조 설명
-KDT-FUL-3_SUBJECT-3-4_MEMBER_7 &nbsp;
-├─css/ &nbsp;
-│  ├─style.css &nbsp;
+KDT-FUL-3_SUBJECT-3-4_MEMBER_7 </br>
+├─css/ </br>
+│  ├─style.css </br>
 │
 ├─js/
 │  ├─detail.js
