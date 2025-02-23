@@ -1,42 +1,40 @@
 # 프로젝트 구조 설명
-KDT-FUL-3_SUBJECT-3-4_MEMBER_7
 - css/
-    -style.css
+    - style.css
 - js/
-    -detail.js
-	-index.js
-	-modify.js
--public/
-	-error404.html
-	-index.html
-	-pageDetail.html
-	-pageModify.html
-	-pageWrite.html
--src/
-	-const/
-		-pageWriteData.js
-
-	-function/
-		-createJSON.js
-		-createOneJsonFile.js
-		-dataToJsonParse.js
-		-dataToJsonStringify.js
-		-deleteDataInListJson.js
-		-fileDataToObject.js
-		-findLastOrder.js
-		-findObjectAtDataJSON.js
-		-getOrder.js
-		-modifyDataToObject.js
-		-orderSplit.js
-		-querystringToObject.js
-		-readDataFile.js
-		-updateListJson.js
-		-userDataToObject.js
--app.js
--data.JSON
--list.JSON
--package.json
--readme.md
+    - detail.js
+	- index.js
+	- modify.js
+- public/
+	- error404.html
+	- index.html
+	- pageDetail.html
+	- pageModify.html
+	- pageWrite.html
+- src/
+	- const/
+		- pageWriteData.js
+	- function/
+		- createJSON.js
+		- createOneJsonFile.js
+		- dataToJsonParse.js
+		- dataToJsonStringify.js
+		- deleteDataInListJson.js
+		- fileDataToObject.js
+		- findLastOrder.js
+		- findObjectAtDataJSON.js
+		- getOrder.js
+		- modifyDataToObject.js
+		- orderSplit.js
+		- querystringToObject.js
+		- readDataFile.js
+		- updateListJson.js
+		- userDataToObject.js
+- app.js
+- data.JSON
+- list.JSON
+- package.json
+- readme.md
 
 # 실행 방법
 ## 1. 홈 화면 확인하기
