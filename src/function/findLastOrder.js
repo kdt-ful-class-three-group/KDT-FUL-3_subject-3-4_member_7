@@ -8,10 +8,7 @@ function findLastOrder() {
   const dataFile = readDataFile();
   //* 받아온 문자열을 객체화 한다.
   const dataObj = dataToJsonParse(dataFile);
-  dataObj.forEach(() => {
-    //* 객체의 수만큼 order가 증가한다.
-    order++;
-  });
+  dataObj.filter((data) => data.order > order ? order = data.order : order++);
 
   return order;
 }
