@@ -25,10 +25,12 @@ const server = http.createServer(function(req, res) {
       res.end();
       //* 메인에서 사용할 list.JSON을 참조할 수 있게 만들어 준다.
     } else if(req.url === "/list.JSON") {
-      const json = fs.readFileSync('list.JSON');
-      res.writeHead(200, {"Content-Type" : "text/json"});
-      res.write(json);
-      res.end();
+      if(fs.existsSync('list.JSON')) {
+        const json = fs.readFileSync('list.JSON');
+        res.writeHead(200, {"Content-Type" : "text/json"});
+        res.write(json);
+        res.end();
+      }
       //* 각 참조한 javascript파일을 가지고 온다.
     }else if(req.url.endsWith(".js")) {
       const javascript = fs.readFileSync(`./${req.url}`);
